@@ -1,16 +1,16 @@
 #!/usr/bin/python3
-"""
-Module 5-to_json_string
-Contains function that returns JSON representation of obj (string)
-"""
+"""initializate"""
 
 
-def to_json_string(my_obj):
-    """Returns JSON representation of obj (string)
-    Args:
-    my_obj: python object
-    Return:
-    json string representation
-    """
-    import json
-    return json.dumps(my_obj)
+def read_lines(filename="", nb_lines=0):
+    """ reads n lines of a text file """
+    i = len(open(filename).readlines())
+    with open(filename, encoding="utf-8") as f:
+        if nb_lines <= 0 or nb_lines >= i:
+            line = f.read()
+            print(line, end="")
+        else:
+            for _ in range(nb_lines):
+                lines = next(f).strip()
+                print(lines)
+    f.close()
