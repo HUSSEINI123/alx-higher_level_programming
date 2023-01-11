@@ -13,18 +13,19 @@ def pascal_triangle(n):
     [1]
     [1, 1]
     [1, 2, 1]
-                                                                            [1, 3, 3, 1]
-                                                                                        [1, 4, 6, 4, 1]
-                                                                                                    [1, 5, 10, 10, 5, 1]
-                                                                                                                [1, 6, 15, 20, 15, 6, 1]
-                                                                                                                    """
-                                                                                                                        if n <= 0:
-                                                                                                                                    return []
-                                                                                                                                    if n == 1:
-                                                                                                                                                return [[1]]
+    [1, 3, 3, 1]
+    [1, 4, 6, 4, 1]
+    [1, 5, 10, 10, 5, 1]
+    [1, 6, 15, 20, 15, 6, 1]
+    """
+    if n <= 0:
+        return []
+    triangle = [[1]]
 
-                                                                                                                                                triangle = [[1]]
-                                                                                                                                                    for rows in range(n-1):
-                                                                                                                                                                triangle.append([a+b for a, b
-                                                                                                                                                                                             in zip([0] + triangle[-1], triangle[-1] + [0])])
-                                                                                                                                                                return 
+    for x in range(1, n):
+        row = [1]
+        for y in range(1, x):
+            row.append(triangle[x-1][y-1] + triangle[x-1][y])
+        row.append(1)
+        triangle.append(row)
+    return triangle
