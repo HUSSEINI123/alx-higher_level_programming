@@ -1,11 +1,12 @@
 #!/usr/bin/python3
-"""
-Module 4-append_write
-Contains function that appends to text file and returns num chars added
-"""
+"""initializate"""
 
 
-def append_write(filename="", text=""):
-    """appends to text file and returns num chars added"""
-    with open(filename, mode="a", encoding="utf-8") as f:
-        return(f.write(text))
+def number_of_lines(filename=""):
+    """function that returns the number of lines of a text file"""
+    num = 0
+    with open(filename, encoding="utf-8") as f:
+        line = f.readlines()
+        num = len(line)
+    f.close()
+    return num
